@@ -1,4 +1,4 @@
 key : values
 
 webserveronredhat: httpd
-webserveronubuntu: apach2
+webserveronubuntu: apache2

@@ -1,1 +1,1 @@
-installingjavaonubuntu: openjdk-9-jdk
+installingjavaonubuntu: openjdk-9-jdk-headless

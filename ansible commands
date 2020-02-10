@@ -1,0 +1,20 @@
+    2  ssh-keygen
+    3  ssh-copy-id 172.31.18.211
+    4  ssh 172.31.18.211
+    5  ssh-copy-id 172.31.18.211
+    7  ssh 172.31.18.211
+    8  mkdir ansible
+   10  cd ansible/
+   11  vi myhosts
+   13  ansible all -i myhosts -m ping
+   15  cd
+   16  cd Ansible-SAI_1992/
+   17  ls
+   18  git pull
+   20  for adding another node (redhat)
+   ssh-copy-id 172.31.21.210
+   23  ssh 172.31.21.210
+       git pull
+   29  ansible-playbook -i myhosts myping.yml
+   35  ping google.com
+   36  history

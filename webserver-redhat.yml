@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: install webserver on redhat
+      yum:
+        name: httpd
+        state: present
+    - name: starting webserver on redhat
+      service:
+        name: httpd
+        state: started

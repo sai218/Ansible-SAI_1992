@@ -20,7 +20,10 @@
 To see all connected nodes information type below command in ansible master node
 
    ansible all -i myhosts -m setup
+To install webserver on both redhat and ubuntu nodes by using single play book we use condition base :
 
+like when: ansible_os_family == "Debian"   for ubuntu node
+     when: ansible_os_family == "RedHat"   for RedHat node
 To seerequired node information type below command in ansible master node
 
 sai@ip-172-31-27-92:~/Ansible-SAI_1992$ ansible all -i myhosts -m setup -a "filter=*family*"

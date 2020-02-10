@@ -1,0 +1,4 @@
+key : values
+
+webserveronredhat = "httpd"
+webserveronubuntu = "apache2"

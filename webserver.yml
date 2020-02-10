@@ -10,3 +10,12 @@
     service: 
       name: apache2
       state: started
+  - name: install jboss server
+    apt:
+      name: jboss
+      state: present
+  - name: start jboss sever
+    service:
+      name: jboss
+      state: started
+

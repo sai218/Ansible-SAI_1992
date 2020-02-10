@@ -16,5 +16,27 @@
    23  ssh 172.31.21.210
        git pull
    29  ansible-playbook -i myhosts myping.yml
-   35  ping google.com
-   36  history
+   
+To see all connected nodes information type below command in ansible master node
+
+   ansible all -i myhosts -m setup
+
+To seerequired node information type below command in ansible master node
+
+sai@ip-172-31-27-92:~/Ansible-SAI_1992$ ansible all -i myhosts -m setup -a "filter=*family*"
+172.31.18.211 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_os_family": "Debian",
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false
+}
+172.31.21.210 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_os_family": "RedHat",
+        "discovered_interpreter_python": "/usr/libexec/platform-python"
+    },
+    "changed": false
+
+   
+

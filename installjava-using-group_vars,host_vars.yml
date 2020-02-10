@@ -4,12 +4,12 @@
   tasks:
     - name: install java7 on redhat node
       yum:
-        name: "{{ installing-javaon-redhat }}"
+        name: "{{installing-javaon-redhat}}"
         state: present
       when: ansible_os_family== "RedHat"    
     - name: install java8 on ubuntu node
       apt: 
-        name: "{{ installing-javaon-ubuntu }}"
+        name: "{{installing-javaon-ubuntu}}"
         state: present
       when: ansible_os_family== "Debian"
     

@@ -41,5 +41,38 @@ sai@ip-172-31-27-92:~/Ansible-SAI_1992$ ansible all -i myhosts -m setup -a "filt
     },
     "changed": false
 
+group_vars:
+In group_vars we assign key and values.
+for that create one group_vars folder and add webserver as a file
+ 
+ Structure:
+   group-group_vars
+      webserver 
+      dbserver
+
+  Ex:
+  key : values
+
+webserveronredhat: httpd
+webserveronubuntu: apache2
+
+Install java 7  redhat and java 8 on ubuntu node in a single playbook:
+
+Structure:
+   group-group_vars
+      webserver 
+      dbserver
+
+Ex:
+key : values
+
+java7on: 
+java8on: 
+
+
+
+
+
+
    
 

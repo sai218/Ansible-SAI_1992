@@ -10,12 +10,12 @@
     service: 
       name: apache2
       state: started
-  - name: install jboss server
+  - name: install wildfly jboss server
     apt:
-      name: jboss
+      name: wildfly
       state: present
   - name: start jboss sever
     service:
-      name: jboss
+      name: wildfly
       state: started
 

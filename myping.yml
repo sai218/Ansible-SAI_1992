@@ -2,8 +2,8 @@
 - hosts: all
   become: yes
   tasks:
-- name: ping node
-  ping: 
-  
+  - name: ping node
+    ping: 
+
   
  

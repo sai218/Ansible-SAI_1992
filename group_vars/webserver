@@ -3,3 +3,6 @@ key : values
 webserveronredhat: httpd
 webserveronubuntu: apache2
 
+
+installing-javaon-redhat: java-1.8.0-openjdk
+installing-javaon-ubuntu: openjdk-8-jre

@@ -2,7 +2,7 @@
 - hosts: webserver
   become: yes
   tasks:
-    - name: install java7 on redhat node
+    - name: install java8 on redhat node
       yum:
         name: "{{installingjavaonredhat}}"
         state: present

@@ -1,0 +1,20 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: display host name
+      command: hostname -f
+      register: myresult
+    - name: displaying my result value
+      debug:
+        msg: "{{myresult}}"
+    - name: installing git
+      apt:
+        name: git
+        state: present
+      when: myresult.stderr == ""
+    - name: install tree 
+      apt:
+        name: git
+        state: present
+      when: myresult.stderr !== ""  

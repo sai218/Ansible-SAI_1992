@@ -8,4 +8,8 @@
     - name: displaying my result value
       debug:
         msg: "{{myresult}}"
-        
+
+
+## Above play book is to display "hostname -f" command in detailed manner
+## Based on above we come to know whether stderr: "" is present or not on all nodes  
+## and based on that we will install specific software as we required          

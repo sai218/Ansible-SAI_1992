@@ -1,0 +1,25 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+    - name: installwebserver
+      apt:
+        name: apache2
+        state: present 
+      notify: restartwebserver
+
+    - name: copying index.j2 file to nodes
+      template: 
+        src: index.j2
+        dest: /var/www/html/index.html
+      notify: restartwebserver
+      
+# Handlers: By using handlres we can restart the server where ever you want      
+  handlers:
+    - name: restartwebserver
+      service: 
+        name: apache2
+        state: started 
+
+
+

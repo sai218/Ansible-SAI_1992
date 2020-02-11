@@ -18,14 +18,3 @@
         name: tree
         state: present
       when: myresult.stderr != "" 
-## for redhat node follow bellow:
-    - name: installing git
-      yum:
-        name: git
-        state: present
-      when: myresult.stderr == ""
-    - name: install tree 
-      yum:
-        name: tree
-        state: present
-      when: myresult.stderr != ""  

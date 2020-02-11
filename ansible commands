@@ -41,5 +41,18 @@ sai@ip-172-31-27-92:~/Ansible-SAI_1992$ ansible all -i myhosts -m setup -a "filt
     },
     "changed": false
 
+
+Templates & Handlers:
+i want to dsiplay apache2 webpage replaced with my own content
+for this before writing playbook we need to create index.j2 file with which you want from node and your matter as follows:
+
+#<h1> This is SAI & HARISH </h1>
+#<h1> Displaying i.p address of node: "{{ansible_all_ipv4_addresses}}" </h1>
+#<h1> Displaying Family of particular node: "{{ansible_os_family}}"</h1>
+
+after writing index.j2 file you will go to template.yml playbook
+
+
+
    
 

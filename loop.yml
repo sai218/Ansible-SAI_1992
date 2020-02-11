@@ -6,19 +6,19 @@
     apt:
       name: "{{item}}"
       state: present
-      loop: 
-        - git
-        - tree 
-        - wget 
+    loop: 
+      - git
+      - tree 
+      - wget 
     when: ansible_os_family == "Debian"
 
   - name: installing git,tree,wget on redhat
     yum:
       name: "{{item}}"
       state: present
-      loop: 
-        - git
-        - tree 
-        - wget 
+    loop: 
+      - git
+      - tree 
+      - wget 
     when: ansible_os_family == "RedHat"
 

@@ -1,0 +1,17 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+    - name: install webserver
+      apt: 
+       namess: apache2
+       state: present
+      ignore_errors: yes       
+      notify: startingapacheserver
+  handlers:
+    - name: startingapacheserver
+      service:
+        name: apache2 
+        state: started
+
+

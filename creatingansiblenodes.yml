@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: creating ubuntu nodes automatically
+    ec2:
+      key_name: oregon.pem
+      instance_type: t2.micro
+      image: ami-088ea1d3251b4afa7
+      wait: yes
+      region: us-west-2
+      group: my_SG
+      count: 3
+      vpc_subnet_id: subnet-de744da7
+      assign_public_ip: yes
+      instance_tags:
+        Name: ansible_ubuntuNodes

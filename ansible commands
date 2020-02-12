@@ -52,7 +52,23 @@ for this before writing playbook we need to create index.j2 file with which you 
 
 after writing index.j2 file you will go to template.yml playbook
 
+DYNAMIC INVENTORY:
 
+1. create AWS admin user
+2. under Master >>user sai
+   on Ubuntu 
+   sudo apt-get install python-pip
+   sudo pip install boto
+3. on user sai and root
+   create vi.boto (file)
+   [Credentials]
+   aws_access_key_id=foo 
+   aws_secret_access_key= ---
+4.Create a AMI by using our required existing ubuntu node or redhat node
+   go to ansible node actions>>create AMI and name as ubuntunodeAMI and create
+   Then go to ec2 ami and it will run
+     after creating AMI all data from the node will be stored
+5. Create instances by using playbook
 
    
 

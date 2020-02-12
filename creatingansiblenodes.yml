@@ -4,7 +4,7 @@
   tasks:
   - name: creating ubuntu nodes automatically
     ec2:
-      key_name: oregon.pem
+      key_name: oregon
       instance_type: t2.micro
       image: ami-088ea1d3251b4afa7
       wait: yes

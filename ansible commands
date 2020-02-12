@@ -55,6 +55,7 @@ after writing index.j2 file you will go to template.yml playbook
 DYNAMIC INVENTORY:
 
 1. create AWS admin user
+   create IAM in services and create user and select check boxes and permssion and download .csv file
 2. under Master >>user sai
    on Ubuntu 
    sudo apt-get install python-pip
@@ -63,12 +64,23 @@ DYNAMIC INVENTORY:
    create vi.boto (file)
    [Credentials]
    aws_access_key_id=foo 
-   aws_secret_access_key= ---
+   aws_secret_access_key= ---  (Copy paste IAM accesskey and secret key)
 4.Create a AMI by using our required existing ubuntu node or redhat node
    go to ansible node actions>>create AMI and name as ubuntunodeAMI and create
    Then go to ec2 ami and it will run
      after creating AMI all data from the node will be stored
-5. Create instances by using playbook
+5. Create instances by using playbook (creatinginstances.yml)
+
+for Dyanamic concepts:
+search in google ec2.py, ec2.ini copy paste the data, 
+ under user create two file vi ec2.py, ec2.ini and paste
+ change permissions of bothfiles (chmod 755 ec2.ini, ec2.py)
+to set the path for ec2.ini and ec2.py file  (under user level)
+   >>>export EC2_INI_PATH=/home/sai/ec2.ini
+   >>> export ANSIBLE_HOSTS=/home/sai/ec2.py
+
+To check list of all nodes type command :
+        ./ec2.py --list
 
    
 

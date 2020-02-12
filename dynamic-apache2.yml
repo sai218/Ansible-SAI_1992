@@ -1,0 +1,16 @@
+---
+- hosts: tag_Name_ansible_ubuntuNodes
+  become: yes
+  tasks:
+    - name: installing apache2 on new ubuntu nodes
+      apt:
+        name: apache2
+        state: present
+    - name: starting webserver
+      service:
+        name: apache2
+        state: started
+    - name: installing tree
+      apt:
+        name: tree
+        state: present

@@ -81,6 +81,11 @@ to set the path for ec2.ini and ec2.py file  (under user level)
 
 To check list of all nodes type command :
         ./ec2.py --list
+    we will playbook according to the tag list.
+after writing play book the new created nodes to chech pingable or not
+ ansible -i ec2.py -u sai tag_Name_ansible_ubuntuNodes -m ping
+  to execute a play book  
 
+   ansible-playbook -i ec2.py -u sai dynamic-apache2.yml
    
 

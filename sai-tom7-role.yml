@@ -2,4 +2,4 @@
 - hosts: ubuntuserver
   become: yes
   roles:
-  - {role: saitom7role, when: ansible_os_family="Debian"} 
+  - {role: saitom7role, when: ansible_os_family== "Debian"} 

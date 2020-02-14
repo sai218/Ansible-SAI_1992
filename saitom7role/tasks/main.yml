@@ -1,2 +1,48 @@
 ---
 # tasks file for saitom7role
+
+# Installing tomcat7 on ubuntu node:
+
+  - name: Run the equivalent of "apt-get update" as a separate step
+    apt: 
+      update_cache: yes
+  
+  - name: installing tomcat7 on ubutu
+    apt:
+      name: tomcat7
+      state: present
+  
+  - name: copying file from config file into tomcat7 server
+    template:
+      src: templates/configtom.j2
+      dest: /etc/default/tomcat7
+    notify: restarttomcat7
+
+  - name: installing additionl packages
+    apt:
+      name: "{{item}}"
+      state: present
+    loop:
+      - tomcat7-docs
+      - tomcat7-admin
+      - tomcat7-examples
+  
+  - name: copying tomcat-user.xml file content into tomcat7 server
+    template:
+      src: templates/tomuser.j2
+      dest: /etc/tomcat7/tomcat-users.xml
+    notify: restarttomcat7
+
+  - name: deploying java application into tomcat7 through s3
+    get_url:
+      url: https://saiwar.s3.amazonaws.com/saiLogin-1.0.war
+      dest: /var/lib/tomcat7/webapps/
+      force_basic_auth: yes
+    notify: restarttomcat7 
+
+
+  
+
+
+
+  

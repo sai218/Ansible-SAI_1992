@@ -89,3 +89,75 @@ after writing play book the new created nodes to chech pingable or not
    ansible-playbook -i ec2.py -u sai dynamic-apache2.yml
    
 
+   ANSIBLE-ROLES:
+   To create ansible-roles we will be under master and execute below command
+
+   ansible-galaxy init tomrole (we can any name instaed of tomrole ex.saitom7role)
+after installation type
+
+tree saitom7role
+ you can see tree structure format of saitom7role.
+
+ 1) after creation of role we have to create on playbookto call our required role ex:saitom7role calling as sai-tom7-role.yml.
+ in order to execute in ansible playbook. 
+
+ 2) After editing file in  sudo nano /etc/default/tomcat7.
+ To get the file content from server location to local system. follow belo:
+ chang permissions mode to the path 
+ chmod 755 /etc/default/tomcat7
+we need to copy the conten from file to desktop via
+scp or winscp command 
+go to desktop git bash and 
+scp -i .pemfile name ubuntu@public.I.P or public DNS:source destnation
+Ex:scp -i harish.pem ubuntu@172.31.16.201:/etc/default/tomcat7 .
+
+you will file into your desktop open with notepad++ and paste in template, config.j3 file
+
+3) restart the tomcat7
+   for this go to Handlersa 
+      - name: restarttomcat7
+        service:
+          name: tomcat7
+          state: started
+
+    and notify in task main.yml
+
+4) Installing additional packages
+
+ - name: installing additinla packages
+    apt:
+      name: "{{item}}"
+      state: present
+    loop:
+      - tomcat7-docs
+      - tomcat7-admin
+      - tomcat7-examples
+
+5) copying user.xml file from server to local location by chmod command and copy to local and edited in template files
+
+ - name: copying tomcat-user.xml file content into tomcat7 server
+    template:
+      src: templates/tomuser.j2
+      dest: /etc/tomcat7/tomcat-users.xml
+    notify: restarttomcat7
+
+we can use upto tomcat level but not deployed
+6) for deploying application .war file through s3 or jfrog follows:
+for TOMACT7:
+- name: deploying java application into tomcat7 through s3
+    get_url:
+      url: https://saiwar.s3.amazonaws.com/saiLogin-1.0.war
+      dest: /var/lib/tomcat7/webapps/
+      force_basic_auth: yes
+    notify: restarttomcat7 
+
+7) Now go to main playbook i.e sai-tom7-role.yml
+
+---
+- hosts: ubuntuserver
+  become: yes
+  roles:
+  - {role: saitom7role, when: ansible_os_family="Debian"} 
+
+path for tomcat7 .war file deploying path on Ubuntu:--  /var/lib/tomcat7/webapps
+path for tomcat7 .war file deploying path on RedHat:--  /usr/share/tomcat/webapps

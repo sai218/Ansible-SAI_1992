@@ -1,2 +1,7 @@
 ---
 # handlers file for saitom7role
+
+- name: restarttomcat7
+  service:
+    name: tomcat7
+    state: started

@@ -35,10 +35,17 @@
 
   - name: deploying java application into tomcat7 through s3
     get_url:
-      url: https://saiwar.s3.amazonaws.com/saiLogin-1.0.war
+      url: http://52.12.136.101:8081/artifactory/Test/{{buildjobno}}/target/mahaLogin-2.0.war
       dest: /var/lib/tomcat7/webapps/
       force_basic_auth: yes
+      username: admin    
+      password: password1
     notify: restarttomcat7 
+
+  - name: printing build number 
+    debug:
+      msg: "{{buildjobno}}"
+  
 
 
   

@@ -33,18 +33,19 @@
       dest: /etc/tomcat7/tomcat-users.xml
     notify: restarttomcat7
 
-  - name: deploying java application into tomcat7 through s3
+  - name: deploying java application into tomcat7 through JFROG
     get_url:
-      url: http://52.12.136.101:8081/artifactory/Test/{{buildjobno}}/target/mahaLogin-2.0.war
-      dest: /var/lib/tomcat7/webapps/
+      #url: http://52.12.136.101:8081/artifactory/Test/{{buildjobno}}/target/mahaLogin-2.0.war
+      url: https://saiwar.s3.amazonaws.com/saiLogin-1.0.war  
+      dest: /var/lib/tomcat7/webapps/saiLogin-1.0.war
       force_basic_auth: yes
-      username: admin    
-      password: password1
+      #username: admin    
+      #password: password1
     notify: restarttomcat7 
 
-  - name: printing build number 
-    debug:
-      msg: "{{buildjobno}}"
+  - #name: printing build number 
+    #debug:
+      #msg: "{{buildjobno}}"
   
 
 
